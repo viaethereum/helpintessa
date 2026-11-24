@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Виктория Слесарева — AI-креатор для брендов</title>
+<style>
+  @font-face {
+    font-family: "Schueler";
+    src: url("fonts/SchuelerSuperHyperXPPlus-Bold.otf") format("opentype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: block;
+    ascent-override: 75.4%;
+    descent-override: 27%;
+    line-gap-override: 0%;
+  }
+  @font-face {
+    font-family: "Schueler";
+    src: url("fonts/SchuelerSuperHyperXPPlus-Regular.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: block;
+  }
+  @font-face {
+    font-family: "Steppe";
+    src: url("fonts/Steppe-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: block;
+  }
+
+  :root {
+    --bg: #FCFBF9;
+    --ink: #423F46;
+    --accent: #CCAEB8;
+    --line: rgba(66, 63, 70, 0.22);
+    --dot: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='22' height='22'><circle cx='11' cy='11' r='1.15' fill='rgb(66,63,70)' fill-opacity='0.09'/></svg>");
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  @page {
+    size: 1440px 1800px;
+    margin: 100px 0;
+  }
+
+  html, body {
+    width: 1440px;
+    color: var(--ink);
+    background-color: var(--bg);
+    background-image: var(--dot);
+    background-size: 22px 22px;
+    background-position: 0 0;
+    font-synthesis: none;
+    -webkit-font-smoothing: antialiased;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  a { color: var(--ink); text-decoration: none; }
+
+  .col {
+    width: 960px;
+    margin: 0 auto;
+  }
+
+  /* ——— Header (as in v8) ——— */
+  .header-page {
+    padding: 60px 0 40px;
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .header {
+    width: 960px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 56px;
+  }
+
+  .photo-wrap {
+    flex: 0 0 360px;
+    width: 360px;
+    height: 450px;
+  }
+
+  .photo-wrap img {
+    display: block;
+    width: 360px;
+    height: 450px;
+    object-fit: cover;
+    object-position: center 20%;
+    border-radius: 14px;
+    border: 0;
+  }
+
+  .intro {
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  h1 {
+    font-family: "Schueler", sans-serif;
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 1.024;
+    letter-spacing: 0;
+    color: var(--ink);
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+  }
+
+  .subtitle {
+    display: inline-block;
+    width: fit-content;
+    max-width: 100%;
+    font-family: "Schueler", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.05;
+    color: var(--ink);
+    background: var(--accent);
+    padding: 6px 12px;
+    border-radius: 4px;
+    margin: 0;
+    white-space: nowrap;
+    box-shadow: none;
+  }
+
+  .subtitle-wrap { display: block; flex: 0 0 auto; }
+  .body { flex: 0 0 auto; }
+
+  .offer, .bio {
+    font-family: "Steppe", sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--ink);
+    text-align: left;
+    overflow-wrap: normal;
+    margin: 0;
+  }
+  .bio { margin-top: 14px; }
+
+  .header-footer {
+    flex: 0 0 auto;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+    margin-bottom: -3.5px;
+  }
+
+  .portfolio-note {
+    font-family: "Steppe", sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.45;
+    color: var(--ink);
+    text-align: left;
+    margin: 0;
+  }
+
+  h2 {
+    font-family: "Schueler", sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.1;
+    color: var(--ink);
+    margin: 0 0 32px;
+    text-align: left;
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  /* ——— How I work ——— */
+  #process {
+    padding-top: 48px;
+    padding-bottom: 20px;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .steps { list-style: none; }
+
+  .step {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 28px;
+    padding: 22px 0;
+  }
+
+  .steps li + li { border-top: 1px solid var(--line); }
+
+  .step-num {
+    flex: 0 0 56px;
+    font-family: "Schueler", sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.3;
+    color: var(--ink);
+    letter-spacing: 0.04em;
+  }
+
+  .step p {
+    flex: 1 1 auto;
+    font-family: "Steppe", sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.55;
+    text-align: left;
+    margin: 0;
+    padding-top: 2px;
+  }
+
+  /* ——— Portfolio ——— */
+  #portfolio {
+    break-before: page;
+    page-break-before: always;
+    padding: 0 0 8px;
+  }
+
+  #portfolio > .col > h2 {
+    text-align: center;
+    margin: 0 0 40px;
+  }
+
+  .series {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin: 0 0 36px;
+  }
+
+  .series:last-child { margin-bottom: 0; }
+
+  .series-title {
+    font-family: "Steppe", sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.45;
+    margin: 0 0 12px;
+    text-align: left;
+  }
+
+  .frames {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .frame-btn {
+    display: block;
+    flex: 1 1 0;
+    width: calc((100% - 40px) / 3);
+    padding: 0;
+    border: 0;
+    background: rgba(66, 63, 70, 0.07);
+    cursor: pointer;
+    border-radius: 0;
+    font: inherit;
+    color: inherit;
+  }
+
+  .frame-btn img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center 20%;
+    border: 0;
+    pointer-events: none;
+  }
+
+  /* ——— Price, request, legal (follow last series if they fit) ——— */
+  .closing {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    padding-top: 28px;
+  }
+
+  #price { padding: 0 0 16px; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: "Steppe", sans-serif;
+    font-size: 17px;
+    line-height: 1.45;
+    text-align: left;
+    color: var(--ink);
+  }
+
+  th, td {
+    padding: 14px 20px 14px 0;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+    font-weight: 400;
+  }
+
+  th {
+    font-family: "Schueler", sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid rgba(66, 63, 70, 0.45);
+    padding-top: 0;
+  }
+
+  td:nth-child(2), th:nth-child(2),
+  td:nth-child(3), th:nth-child(3) { white-space: nowrap; }
+
+  td:nth-child(3), th:nth-child(3) {
+    padding-right: 0;
+    width: 18%;
+  }
+
+  td:nth-child(2), th:nth-child(2) { width: 38%; }
+
+  .price-notes { margin-top: 20px; }
+
+  .price-notes p {
+    font-family: "Steppe", sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    text-align: left;
+    margin: 0 0 10px;
+  }
+
+  .price-notes p:last-child { margin-bottom: 0; }
+
+  #request { padding: 24px 0 0; }
+
+  .cta {
+    font-family: "Schueler", sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 1.25;
+    text-align: left;
+    margin: 0 0 24px;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .btn {
+    display: inline-block;
+    font-family: "Steppe", sans-serif;
+    font-size: 16px;
+    line-height: 1;
+    color: var(--ink);
+    border: 1px solid var(--ink);
+    border-radius: 4px;
+    padding: 14px 28px;
+    text-decoration: none;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .legal {
+    margin-top: 32px;
+    font-family: "Steppe", sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    text-align: left;
+    color: var(--ink);
+  }
+
+  .legal p { margin: 0; }
+
+  /* Lightbox (site only; hidden in print/PDF) */
+  #lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    background: rgba(66, 63, 70, 0.88);
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    cursor: pointer;
+  }
+
+  #lightbox.is-open { display: flex; }
+
+  #lightbox img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    background: var(--bg);
+    cursor: default;
+    pointer-events: none;
+  }
+
+  @media print {
+    #lightbox { display: none !important; }
+    .frame-btn { cursor: default; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="header-page">
+    <div class="header">
+      <div class="photo-wrap">
+        <img src="author_800.jpg" alt="Виктория Слесарева">
+      </div>
+      <div class="intro">
+        <h1>Виктория Слесарева</h1>
+        <div class="subtitle-wrap">
+          <p class="subtitle">AI-креатор для брендов · @helpintessa</p>
+        </div>
+        <div class="body">
+          <p class="offer">Создаю авторские AI-визуалы для брендов: разрабатываю визуальные концепции и серии изображений — от виртуальной съёмки реальных изделий до художественных образов для рекламных кампаний и социальных сетей.</p>
+          <p class="bio">До старта работы в ИИ я работала 8 лет фотографом и 5 лет в инфобизнесе как smm и инфопродюсер. Поэтому я точно знаю, как создавать продающие, красивые, эстетичные изображения, в лучшем свете преподносящие ваши товары и услуги.</p>
+        </div>
+        <div class="header-footer">
+          <p class="portfolio-note">На этой странице вы можете ознакомиться с частью моего портфолио.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="process">
+    <div class="col">
+      <h2>Как я работаю</h2>
+      <ol class="steps">
+        <li class="step">
+          <div class="step-num">01</div>
+          <p>Обсуждаем задачу: вы показываете референсы, мы составляем ТЗ, которое понятно обеим сторонам.</p>
+        </li>
+        <li class="step">
+          <div class="step-num">02</div>
+          <p>Вы присылаете 2–3 фото товара в хорошем качестве и освещении.</p>
+        </li>
+        <li class="step">
+          <div class="step-num">03</div>
+          <p>Вы вносите предоплату 50%.</p>
+        </li>
+        <li class="step">
+          <div class="step-num">04</div>
+          <p>Я начинаю работу, затем показываю варианты, вы утверждаете то, что вам понравилось и затем я дорабатываю выбранные.</p>
+        </li>
+        <li class="step">
+          <div class="step-num">05</div>
+          <p>Сдаю работу, вы оплачиваете оставшиеся 50%.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="portfolio">
+    <div class="col">
+      <h2>ПОРТФОЛИО</h2>
+
+      <article class="series">
+        <h3 class="series-title">fashion съемка в библиотеке</h3>
+        <div class="frames">
+          <button type="button" class="frame-btn" data-full="full/tvorcheskaya_1.jpg"><img src="portfolio_web/tvorcheskaya_1.jpg" alt="fashion съемка в библиотеке"></button>
+          <button type="button" class="frame-btn" data-full="full/tvorcheskaya_2.jpg"><img src="portfolio_web/tvorcheskaya_2.jpg" alt="fashion съемка в библиотеке"></button>
+          <button type="button" class="frame-btn" data-full="full/tvorcheskaya_3.jpg"><img src="portfolio_web/tvorcheskaya_3.jpg" alt="fashion съемка в библиотеке"></button>
+        </div>
+      </article>
+      <article class="series">
+        <h3 class="series-title">атмосферная тематическая съемка</h3>
+        <div class="frames">
+          <button type="button" class="frame-btn" data-full="full/fantaziynaya_1.jpg"><img src="portfolio_web/fantaziynaya_1.jpg" alt="атмосферная тематическая съемка"></button>
+          <button type="button" class="frame-btn" data-full="full/fantaziynaya_2.jpg"><img src="portfolio_web/fantaziynaya_2.jpg" alt="атмосферная тематическая съемка"></button>
+          <button type="button" class="frame-btn" data-full="full/fantaziynaya_3.jpg"><img src="portfolio_web/fantaziynaya_3.jpg" alt="атмосферная тематическая съемка"></button>
+        </div>
+      </article>
+      <article class="series">
+        <h3 class="series-title">персонажи для ai-сериалов</h3>
+        <div class="frames">
+          <button type="button" class="frame-btn" data-full="full/mult_1.jpg"><img src="portfolio_web/mult_1.jpg" alt="персонажи для ai-сериалов"></button>
+          <button type="button" class="frame-btn" data-full="full/mult_2.jpg"><img src="portfolio_web/mult_2.jpg" alt="персонажи для ai-сериалов"></button>
+          <button type="button" class="frame-btn" data-full="full/mult_3.jpg"><img src="portfolio_web/mult_3.jpg" alt="персонажи для ai-сериалов"></button>
+        </div>
+      </article>
+      <article class="series">
+        <h3 class="series-title">фотосессия с реальным парфюмом и реальной одеждой</h3>
+        <div class="frames">
+          <button type="button" class="frame-btn" data-full="full/parfum_1.jpg"><img src="portfolio_web/parfum_1.jpg" alt="фотосессия с реальным парфюмом и реальной одеждой"></button>
+          <button type="button" class="frame-btn" data-full="full/parfum_2.jpg"><img src="portfolio_web/parfum_2.jpg" alt="фотосессия с реальным парфюмом и реальной одеждой"></button>
+          <button type="button" class="frame-btn" data-full="full/parfum_3.jpg"><img src="portfolio_web/parfum_3.jpg" alt="фотосессия с реальным парфюмом и реальной одеждой"></button>
+        </div>
+      </article>
+      <article class="series">
+        <h3 class="series-title">концепт для съемки украшений</h3>
+        <div class="frames">
+          <button type="button" class="frame-btn" data-full="full/ukrasheniya_1.jpg"><img src="portfolio_web/ukrasheniya_1.jpg" alt="концепт для съемки украшений"></button>
+          <button type="button" class="frame-btn" data-full="full/ukrasheniya_2.jpg"><img src="portfolio_web/ukrasheniya_2.jpg" alt="концепт для съемки украшений"></button>
+          <button type="button" class="frame-btn" data-full="full/ukrasheniya_3.jpg"><img src="portfolio_web/ukrasheniya_3.jpg" alt="концепт для съемки украшений"></button>
+        </div>
+      </article>
+      <article class="series">
+        <h3 class="series-title">реальные вязаные кофты ручной работы</h3>
+        <div class="frames">
+          <button type="button" class="frame-btn" data-full="full/kofty_1.jpg"><img src="portfolio_web/kofty_1.jpg" alt="реальные вязаные кофты ручной работы"></button>
+          <button type="button" class="frame-btn" data-full="full/kofty_2.jpg"><img src="portfolio_web/kofty_2.jpg" alt="реальные вязаные кофты ручной работы"></button>
+          <button type="button" class="frame-btn" data-full="full/kofty_3.jpg"><img src="portfolio_web/kofty_3.jpg" alt="реальные вязаные кофты ручной работы"></button>
+        </div>
+      </article>
+      <article class="series">
+        <h3 class="series-title">концепт фотосессии на берегу, реальное платье и украшение на платье</h3>
+        <div class="frames">
+          <button type="button" class="frame-btn" data-full="full/zheltoe_1.jpg"><img src="portfolio_web/zheltoe_1.jpg" alt="концепт фотосессии на берегу, реальное платье и украшение на платье"></button>
+          <button type="button" class="frame-btn" data-full="full/zheltoe_2.jpg"><img src="portfolio_web/zheltoe_2.jpg" alt="концепт фотосессии на берегу, реальное платье и украшение на платье"></button>
+          <button type="button" class="frame-btn" data-full="full/zheltoe_3.jpg"><img src="portfolio_web/zheltoe_3.jpg" alt="концепт фотосессии на берегу, реальное платье и украшение на платье"></button>
+        </div>
+      </article>
+      <article class="series">
+        <h3 class="series-title">концепт фотосессии с реальным платьем</h3>
+        <div class="frames">
+          <button type="button" class="frame-btn" data-full="full/rozovoe_1.jpg"><img src="portfolio_web/rozovoe_1.jpg" alt="концепт фотосессии с реальным платьем"></button>
+          <button type="button" class="frame-btn" data-full="full/rozovoe_2.jpg"><img src="portfolio_web/rozovoe_2.jpg" alt="концепт фотосессии с реальным платьем"></button>
+          <button type="button" class="frame-btn" data-full="full/rozovoe_3.jpg"><img src="portfolio_web/rozovoe_3.jpg" alt="концепт фотосессии с реальным платьем"></button>
+        </div>
+      </article>
+      <article class="series">
+        <h3 class="series-title">съемка с реальным нижним бельем</h3>
+        <div class="frames">
+          <button type="button" class="frame-btn" data-full="full/biruzovoe_1.jpg"><img src="portfolio_web/biruzovoe_1.jpg" alt="съемка с реальным нижним бельем"></button>
+          <button type="button" class="frame-btn" data-full="full/biruzovoe_2.jpg"><img src="portfolio_web/biruzovoe_2.jpg" alt="съемка с реальным нижним бельем"></button>
+          <button type="button" class="frame-btn" data-full="full/biruzovoe_3.jpg"><img src="portfolio_web/biruzovoe_3.jpg" alt="съемка с реальным нижним бельем"></button>
+        </div>
+      </article>
+      <article class="series">
+        <h3 class="series-title">концепт фотосессии с нижним бельем</h3>
+        <div class="frames">
+          <button type="button" class="frame-btn" data-full="full/belie-blond_1.jpg"><img src="portfolio_web/belie-blond_1.jpg" alt="концепт фотосессии с нижним бельем"></button>
+          <button type="button" class="frame-btn" data-full="full/belie-blond_2.jpg"><img src="portfolio_web/belie-blond_2.jpg" alt="концепт фотосессии с нижним бельем"></button>
+          <button type="button" class="frame-btn" data-full="full/belie-blond_3.jpg"><img src="portfolio_web/belie-blond_3.jpg" alt="концепт фотосессии с нижним бельем"></button>
+        </div>
+      </article>
+      <article class="series">
+        <h3 class="series-title">концепт фотосессии с реальным нижним бельем</h3>
+        <div class="frames">
+          <button type="button" class="frame-btn" data-full="full/belie-aziatka_1.jpg"><img src="portfolio_web/belie-aziatka_1.jpg" alt="концепт фотосессии с реальным нижним бельем"></button>
+          <button type="button" class="frame-btn" data-full="full/belie-aziatka_2.jpg"><img src="portfolio_web/belie-aziatka_2.jpg" alt="концепт фотосессии с реальным нижним бельем"></button>
+          <button type="button" class="frame-btn" data-full="full/belie-aziatka_3.jpg"><img src="portfolio_web/belie-aziatka_3.jpg" alt="концепт фотосессии с реальным нижним бельем"></button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <div class="closing">
+    <section id="price">
+      <div class="col">
+        <h2>Прайс</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Услуга</th>
+              <th>Стоимость</th>
+              <th>Срок</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Кадр без товара</td>
+              <td>20 € / 1 800 ₽</td>
+              <td>от 2 дней</td>
+            </tr>
+            <tr>
+              <td>Кадр с товаром</td>
+              <td>20–50 € / 1 800–4 500 ₽</td>
+              <td>от 2 дней</td>
+            </tr>
+            <tr>
+              <td>Серия из 10 кадров</td>
+              <td>от 200 € / от 18 000 ₽</td>
+              <td>от 7 дней</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="price-notes">
+          <p>Ретушь и постобработка входят в стоимость. Предоплата 50/50.</p>
+          <p>* Правки: один круг бесплатно (фон, свет, модель, поза); второй круг — 10 € / 900 ₽ за кадр; смена всей идеи — новый заказ.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="request">
+      <div class="col">
+        <p class="cta">Чтобы обсудить ваш проект, напишите мне</p>
+        <div class="buttons">
+          <a class="btn" href="https://instagram.com/helpintessa" target="_blank" rel="noopener">Instagram</a>
+          <a class="btn" href="https://t.me/helpintessa" target="_blank" rel="noopener">Telegram</a>
+          <a class="btn" href="https://t.me/helpintessa_ai" target="_blank" rel="noopener">TG-канал</a>
+        </div>
+        <div class="legal">
+          <p>ИП на НПД Слесарева Виктория Вадимовна</p>
+          <p>ИНН: 222175145376</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div id="lightbox" hidden>
+    <img alt="">
+  </div>
+
+  <script>
+    (function () {
+      var box = document.getElementById("lightbox");
+      var img = box.querySelector("img");
+
+      function open(src, alt) {
+        img.src = src;
+        img.alt = alt || "";
+        box.hidden = false;
+        box.classList.add("is-open");
+      }
+
+      function close() {
+        box.classList.remove("is-open");
+        box.hidden = true;
+        img.removeAttribute("src");
+        img.alt = "";
+      }
+
+      document.querySelectorAll(".frame-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          open(btn.getAttribute("data-full"), (btn.querySelector("img") || {}).alt || "");
+        });
+      });
+
+      box.addEventListener("click", close);
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && box.classList.contains("is-open")) close();
+      });
+    })();
+  </script>
+
+</body>
+</html>
