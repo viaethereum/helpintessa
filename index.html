@@ -34,7 +34,7 @@
     --ink: #423F46;
     --accent: #CCAEB8;
     --line: rgba(66, 63, 70, 0.22);
-    --dot: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='22' height='22'><circle cx='11' cy='11' r='1.15' fill='rgb(66,63,70)' fill-opacity='0.09'/></svg>");
+    --dot: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14'><circle cx='7' cy='7' r='1.15' fill='rgb(66,63,70)' fill-opacity='0.14'/></svg>");
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -49,7 +49,7 @@
     color: var(--ink);
     background-color: var(--bg);
     background-image: var(--dot);
-    background-size: 22px 22px;
+    background-size: 14px 14px;
     background-position: 0 0;
     font-synthesis: none;
     -webkit-font-smoothing: antialiased;
@@ -199,12 +199,19 @@
   .steps li + li { border-top: 1px solid var(--line); }
 
   .step-num {
-    flex: 0 0 56px;
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #CCAEB8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-family: "Schueler", sans-serif;
     font-weight: 700;
-    font-size: 22px;
-    line-height: 1.3;
-    color: var(--ink);
+    font-size: 24px;
+    line-height: 1;
+    color: #423F46;
     letter-spacing: 0.04em;
   }
 
@@ -216,7 +223,7 @@
     line-height: 1.55;
     text-align: left;
     margin: 0;
-    padding-top: 2px;
+    padding-top: calc((44px - 1.55 * 17px) / 2);
   }
 
   /* ——— Portfolio ——— */
@@ -585,7 +592,7 @@
           </tbody>
         </table>
         <div class="price-notes">
-          <p>Ретушь и постобработка входят в стоимость. Предоплата 50/50.</p>
+          <p>Ретушь и постобработка входят в стоимость. Работаю только по предоплате в 50%.</p>
           <p>* Правки: один круг бесплатно (фон, свет, модель, поза); второй круг — 10 € / 900 ₽ за кадр; смена всей идеи — новый заказ.</p>
         </div>
       </div>
