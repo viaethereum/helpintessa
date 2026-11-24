@@ -2,6 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Виктория Слесарева — AI-креатор для брендов</title>
 <style>
   @font-face {
@@ -34,7 +35,7 @@
     --ink: #423F46;
     --accent: #CCAEB8;
     --line: rgba(66, 63, 70, 0.22);
-    --dot: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14'><circle cx='7' cy='7' r='1.15' fill='rgb(66,63,70)' fill-opacity='0.14'/></svg>");
+    --dot: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='22' height='22'><circle cx='11' cy='11' r='1.15' fill='rgb(66,63,70)' fill-opacity='0.09'/></svg>");
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -45,11 +46,11 @@
   }
 
   html, body {
-    width: 1440px;
+    width: 100%;
     color: var(--ink);
     background-color: var(--bg);
     background-image: var(--dot);
-    background-size: 14px 14px;
+    background-size: 22px 22px;
     background-position: 0 0;
     font-synthesis: none;
     -webkit-font-smoothing: antialiased;
@@ -60,7 +61,7 @@
   a { color: var(--ink); text-decoration: none; }
 
   .col {
-    width: 960px;
+    width: min(960px, calc(100% - 40px));
     margin: 0 auto;
   }
 
@@ -72,7 +73,7 @@
   }
 
   .header {
-    width: 960px;
+    width: min(960px, calc(100% - 40px));
     margin: 0 auto;
     display: flex;
     flex-direction: row;
@@ -409,7 +410,90 @@
     pointer-events: none;
   }
 
+  @media screen and (max-width: 999px) {
+    h1, .subtitle { white-space: normal; }
+    .intro { height: auto; }
+  }
+
+  @media screen and (max-width: 760px) {
+    .header-page { padding: 28px 0 24px; }
+
+    .header {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 22px;
+    }
+
+    .photo-wrap {
+      flex: none;
+      width: 100%;
+      height: auto;
+    }
+
+    .photo-wrap img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 360 / 450;
+    }
+
+    .intro {
+      height: auto;
+      justify-content: flex-start;
+      gap: 14px;
+    }
+
+    .header-footer { margin-bottom: 0; }
+
+    h1 {
+      font-size: 32px;
+      line-height: 1.08;
+    }
+
+    .subtitle { font-size: 16px; }
+
+    h2 {
+      font-size: 26px;
+      margin-bottom: 22px;
+    }
+
+    #portfolio > .col > h2 { margin-bottom: 24px; }
+
+    .cta { font-size: 22px; }
+
+    .step { gap: 16px; }
+    .step p { min-width: 0; }
+
+    .frames { flex-direction: column; gap: 16px; }
+    .frame-btn { width: 100%; flex: none; }
+
+    #price table,
+    #price tbody { display: block; width: 100%; }
+    #price thead { display: none; }
+    #price tr {
+      display: block;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    #price td {
+      display: block;
+      width: auto;
+      padding: 0;
+      border: 0;
+      white-space: normal;
+    }
+    #price td + td { margin-top: 4px; }
+    #price td:nth-child(1) { font-family: "Schueler", sans-serif; }
+
+    .buttons { gap: 10px; }
+    .btn { padding: 12px 18px; max-width: 100%; }
+
+    #lightbox { padding: 12px; }
+    #lightbox img { max-height: calc(100dvh - 24px); }
+  }
+
   @media print {
+    html, body { width: 1440px; }
+    .col, .header { width: 960px; }
     #lightbox { display: none !important; }
     .frame-btn { cursor: default; }
   }
